@@ -1,0 +1,66 @@
+!----- General settings for rxvt-unicode -----!
+URxvt.saveLines: 5000
+URxvt.scrollBar: False
+URxvt.cursorBlink: True
+
+! Disable the annoying KEYCAPTURE MODE in rxvt-unicode
+URxvt.iso14755_52: false
+
+! Fonts for rxvt-unicode
+URxvt.font: xft:FiraCode-Regular:pixelsize=16:antialias=true:hinting=true,xft:Hack-Regular:pixelsize=16,xft:fontawesome-regular:pixelsize=16,xft:devicons-regular:pixelsize=16,xft:octicons:pixelsize=16,xft:Symbola
+URxvt.boldFont: xft:FiraCode-Bold:pixelsize=16:antialias=true:hinting=true,xft:Symbola
+URxvt.italicFont: xft:FiraCode-Light:pixelsize=16:antialias=true,xft:Symbola
+URxvt.letterSpace: 0
+
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.lcdfilter: lcddefault
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+! misc settings
+URxvt.colorUL:		#4682B4
+URxvt.internalBorder: 4
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+URxvt.scrollWithBuffer: true
+URxvt.intensityStyles:	false
+URxvt.depth: 32
+
+! perl extensions path
+URxvt.perl-lib:		/usr/lib/urxvt/perl 
+
+! perl extensions to load
+URxvt.perl-ext: default,clipboard,url-select,resize-font,keyboard-select
+
+!----Extension settings----!
+! url select
+URxvt.keysym.M-u:		perl:url-select:select_next 
+URxvt.url-select.launcher:	/usr/bin/xdg-open 
+URxvt.url-select.underline:	true
+
+! keyboard select
+URxvt.keysym.M-Escape:		perl:keyboard-select:activate
+
+! resize font
+URxvt.keysym.C-minus:     resize-font:smaller
+URxvt.keysym.C-plus:      resize-font:bigger
+URxvt.keysym.C-equal:     resize-font:reset
+
+! enable Ctrl+Shift+c/p to copy and paste
+URxvt.clipboard.copycmd:  xsel --input  --clipboard
+URxvt.clipboard.pastecmd: xsel --output --clipboard
+URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+URxvt.keysym.Control-Shift-V: perl:clipboard:paste
+
+
+!----- rofi settings -----!
+rofi.fake-transparency:	true
+rofi.lines:		4
+rofi.bw:		0
+rofi.opacity:		"10"
+rofi.hide-scrollbar:	true
+rofi.width:		30
+
