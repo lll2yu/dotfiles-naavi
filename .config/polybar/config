@@ -69,7 +69,9 @@ label-empty-foreground = ${colors.primary}
 type = internal/backlight
 card = intel_backlight
 format = <label>
-label =  %percentage%%
+
+; hacky way, needs fix
+label = "%{A4:light -A 5:} %{A}%{A5:light -U 5:}%percentage%%%{A}"
 label-foreground = ${colors.primary}
 label-background = ${colors.background}
 
