@@ -93,9 +93,9 @@ super + alt + f
 	firefox
 
 ## open iwctl
-super + alt + n
-	urxvtc -e iwctl;\
-	bspc node -t "floating"
+#super + alt + n
+#urxvtc -e iwctl;\
+#bspc node -t "floating"
 
 ## open ncpamixer
 super + alt + b
@@ -115,6 +115,11 @@ super + alt + m
 ## ranger file manager
 super + alt + e
 	urxvtc -e ranger;\
+	bspc node -t "floating"
+
+## rtv
+super + alt + r
+	urxvtc -e rtv;\
 	bspc node -t "floating"
 
 #
@@ -187,6 +192,10 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+# focus or send to the given desktop (using keypad keys)
+super + {_,shift + }KP_{End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
 #
 # preselect
 #
@@ -253,3 +262,7 @@ super + shift + a
 			bspc node -f $i;\
 		fi;\
 	fi
+
+## position floating windows around
+alt + KP_{End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	~/.config/scripts/place_floating_window.sh {1-9}

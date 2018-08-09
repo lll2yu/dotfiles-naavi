@@ -106,7 +106,7 @@ date = " %b %d"
 
 time= %l:%M %P
 
-label =%date%,%time%
+label = "%{A1:sh ~/.config/scripts/calander.sh:}%date%,%time%%{A}"
 label-foreground = ${colors.primary-alt}
 label-background = ${colors.background}
 
