@@ -18,9 +18,6 @@ Plug 'vim-syntastic/syntastic'
 
 Plug 'tpope/vim-surround'
 
-"Autocomplete"
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 "Markdown preview"
 Plug 'iamcco/markdown-preview.vim'
 call plug#end()
@@ -77,9 +74,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-"doeplete settings"
-let g:deoplete#enable_at_startup = 1
 
 "Markdown preview settings"
 let g:mkdp_path_to_chrome = "/usr/bin/firefox"
