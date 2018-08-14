@@ -158,6 +158,10 @@ super + {t,shift + t,s,f}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
+# cancel presel
+super + shift + k
+	for window in $(bspc query -N -d focused); do bspc node $window -p cancel; done
+
 #
 # focus/swap
 #
@@ -266,3 +270,4 @@ super + shift + a
 ## position floating windows around
 alt + KP_{End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	~/.config/scripts/place_floating_window.sh {1-9}
+
