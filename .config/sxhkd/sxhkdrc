@@ -93,9 +93,9 @@ super + alt + f
 	firefox
 
 ## open iwctl
-#super + alt + n
-#urxvtc -e iwctl;\
-#bspc node -t "floating"
+super + alt + n
+	urxvtc -e iwctl;\
+	bspc node -t "floating"
 
 ## open ncpamixer
 super + alt + b
@@ -122,6 +122,10 @@ super + alt + r
 	urxvtc -e rtv;\
 	bspc node -t "floating"
 
+## update system
+super + alt + u
+	urxvtc -e aurman -Syu;\
+	bspc node -t "floating"
 #
 # bspwm hotkeys
 #

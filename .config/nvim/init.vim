@@ -13,9 +13,6 @@ Plug 'ap/vim-css-color'
 "For git info in the gutter"
 Plug 'airblade/vim-gitgutter'
 
-"For syntax checking"
-Plug 'vim-syntastic/syntastic'
-
 Plug 'tpope/vim-surround'
 
 "Markdown preview"

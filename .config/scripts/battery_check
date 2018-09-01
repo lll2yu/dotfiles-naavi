@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# battery check script
+# ====================
+# Designed to be run continuously while WM is running
+# Requires libnotify to be installed
+
+BATDIR=/sys/class/power_supply/BAT0
+NOTIFYSEND=/usr/bin/notify-send
+
+if [ ! -x $NOTIFYSEND ]
+then
+   exit 0
+fi
+
+# check every $CHECK seconds
+CHECK=90
+
+( while true
+do
+   BATSTATE=`cat ${BATDIR}/status`
+   # Note valid BATSTATE values are: Charged, Charging, and Discharging
+   if [ "$BATSTATE" = "Discharging" ]
+   then
+      REM_CAP=`cat ${BATDIR}/charge_now`
+      FULL_CAP=`cat ${BATDIR}/charge_full`
+      CHARGE=`echo $(( $REM_CAP * 100 / $FULL_CAP ))`
+      if [ "$CHARGE" -lt "5" ]
+      then
+     $NOTIFYSEND -u critical "Critical battery."
+	 sleep $CHECK
+	 continue
+      fi
+      if [ "$CHARGE" -lt "20" ]
+      then
+     $NOTIFYSEND -u normal "Low battery."
+      fi
+      sleep $CHECK
+   elif [ "$BATSTATE" = "Charged" ]
+   then
+      $NOTIFYSEND -u normal "Full battery."
+      sleep $CHECK
+   else
+      sleep $CHECK
+   fi
+done
+) &
+

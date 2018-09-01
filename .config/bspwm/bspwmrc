@@ -18,11 +18,12 @@ bspc config window_gap           5
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
+bspc config honor_size_hints	 false
 
 #### Applications to autostart
 ##start compton
-#compton  --backend glx --unredir-if-possible --vsync opengl-swc --no-fading-openclose -b & 
-compton --no-fading-openclose -b &
+compton  --backend glx --unredir-if-possible --vsync opengl-swc --no-fading-openclose -b &
+
 ##start urxvt daemon
 urxvtd --quiet --opendisplay --fork &
 
@@ -34,9 +35,6 @@ unclutter &
 
 ##clipboard daemon
 greenclip daemon &
-
-##to click on stuff without mouse
-keynav daemonize &
 
 ##for those funny Java things
 wmname LG3D &
@@ -55,6 +53,9 @@ polybar main &
 
 ##turn on vim speedmode
 xmodmap ~/.config/scripts/speedswapperon &
+
+##notify when low battery
+sh ~/.config/scripts/battery_check &
 
 bspc rule -a Screenkey manage=off
 bspc rule -a Firefox desktop='^3'
