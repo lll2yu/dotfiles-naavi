@@ -64,9 +64,11 @@ Print
 super + Print
 	maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved"
 
-alt + Print
-	maim -s | convert - \( +clone -background black -shadow 80x5+10+10 \) +swap -background none -layers merge +repage ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved"
+super + alt + Print
+	maim -s | convert - \( +clone -background black -shadow 80x5+10+10 \) +swap -background none -layers merge +repage ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png ;notify-send "Screenshot saved"
 
+alt + Print
+	maim -s | xclip -selection clipboard -t image/png
 ## toggle pointer allow focus
 super + alt + p
 	sh .config/scripts/toggleptrfocus.sh
