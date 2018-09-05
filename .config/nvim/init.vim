@@ -13,7 +13,17 @@ Plug 'ap/vim-css-color'
 "For git info in the gutter"
 Plug 'airblade/vim-gitgutter'
 
-Plug 'tpope/vim-surround'
+"To insert brackets in pairs"
+Plug 'jiangmiao/auto-pairs'
+
+"Line intent"
+Plug 'Yggdroot/indentLine'
+
+"Git wrapper"
+Plug 'tpope/vim-fugitive'
+
+"File browser"
+Plug 'tpope/vim-vinegar'
 
 "Markdown preview"
 Plug 'iamcco/markdown-preview.vim'
@@ -28,6 +38,7 @@ set relativenumber
 set nocompatible 
 syntax on 
 filetype plugin indent on
+set nowrap
 
 "set char encoding"
 set encoding=utf8
@@ -62,16 +73,6 @@ call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bol
 
 let g:airline_section_z = airline#section#create(['%3p%%: ', 'linenr', ':%3v'])
 
-"Syntastic settings"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 "Markdown preview settings"
 let g:mkdp_path_to_chrome = "/usr/bin/firefox"
 nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
@@ -79,3 +80,7 @@ imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
 nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
 imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
 let g:mkdp_refresh_slow = 0
+
+"intent settings"
+let g:intentLine_setColors = 0
+let g:intentLine_char = '┆'
