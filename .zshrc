@@ -2,7 +2,6 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=4000
-zstyle :compinstall filename '/home/lll2yu/.zshrc'
 autoload -Uz compinit promptinit
 compinit;promptinit
 prompt spaceship
@@ -11,6 +10,7 @@ prompt spaceship
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
 #source /usr/share/zsh/plugins/zsh-vi-mode/vi-mode.zsh
 
 ##pywal stuff
@@ -18,6 +18,7 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 ##export environment variables
 export EDITOR=nvim
 export BROWSER=firefox
+export SUDO_EDITOR=nvim
 export GPG_TTY=$(tty)
 
 ##ytdl audio search
@@ -34,7 +35,11 @@ bindkey -M vicmd 'j' history-substring-search-down
 ##aliases
 
 alias vim='nvim'
-
+alias sv='sudo -e '
+alias fl='newgrp flutterusers'
+alias mkdir='mkdir -pv'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
 #pacman aliases(taken from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/archlinux/archlinux.plugin.zsh)
 alias pacupg='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
