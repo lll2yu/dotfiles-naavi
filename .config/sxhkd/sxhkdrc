@@ -64,7 +64,7 @@ Print
 super + Print
 	maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved"
 
-super + alt + Print
+ctrl + Print
 	maim -s | convert - \( +clone -background black -shadow 80x5+10+10 \) +swap -background none -layers merge +repage ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png ;notify-send "Screenshot saved"
 
 alt + Print
@@ -99,6 +99,11 @@ super + alt + n
 	urxvtc -e iwctl;\
 	bspc node -t "floating"
 
+## reload iwd.service
+super + alt + shift +n
+	urxvtc -e sudo systemctl restart iwd.service;\
+	bspc node -t "floating"
+
 ## open ncpamixer
 super + alt + b
 	urxvtc -e ncpamixer;\
@@ -126,8 +131,9 @@ super + alt + r
 
 ## update system
 super + alt + u
-	urxvtc -e aurman -Syu;\
+	urxvtc -e aurman -Syu --ignore flutter-beta;\
 	bspc node -t "floating"
+
 #
 # bspwm hotkeys
 #

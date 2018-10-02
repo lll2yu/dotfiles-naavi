@@ -3,11 +3,12 @@
 ### Screenshot
 ![](https://github.com/lll2yu/dotfiles-naavi/raw/master/screenshot.png)
 
+[wallpaper](https://whvn.cc/665945)
 ## Details
 - **Operating System :** Arch Linux
 - **Graphical Server :** Xorg
-- **Video Driver :** nvidia-ck
-- **Display Manager :** ly
+- **Video Driver :** nvidia-dkms
+- **Display Manager :** [ly](https://github.com/cylgom/ly)
 - **Window Manager** : Bspwm
 - **Panel :** Polybar
 - **Wallpaper Handler :** feh

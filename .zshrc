@@ -23,7 +23,8 @@ export GPG_TTY=$(tty)
 
 ##ytdl audio search
 function mm() {
-    mpv --ytdl-format=bestaudio ytdl://ytsearch:"$@"
+    vidTitle=${@// /"\ "}
+	mpv --ytdl-format=bestaudio ytdl://ytsearch:"$vidTitle"
 }
 
 ##zsh history search settings
@@ -40,6 +41,7 @@ alias fl='newgrp flutterusers'
 alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
+alias S='sudo systemctl'
 #pacman aliases(taken from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/archlinux/archlinux.plugin.zsh)
 alias pacupg='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
