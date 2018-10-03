@@ -1,8 +1,11 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 #shell styling and autocomplete
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=4000
-autoload -Uz compinit promptinit
+autoload -Uz compinit promptinit 
 compinit;promptinit
 prompt spaceship
 
@@ -13,6 +16,7 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
 #source /usr/share/zsh/plugins/zsh-vi-mode/vi-mode.zsh
 
+setopt auto_cd
 ##pywal stuff
 (cat ~/.cache/wal/sequences &)
 ##export environment variables
