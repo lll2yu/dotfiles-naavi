@@ -131,7 +131,7 @@ super + alt + r
 
 ## update system
 super + alt + u
-	urxvtc -e aurman -Syu --ignore flutter-beta;\
+	urxvtc -e aurman -Syu;\
 	bspc node -t "floating"
 
 #

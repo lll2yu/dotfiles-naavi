@@ -41,7 +41,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 alias vim='nvim'
 alias sv='sudo -e '
-alias fl='newgrp flutterusers'
 alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
