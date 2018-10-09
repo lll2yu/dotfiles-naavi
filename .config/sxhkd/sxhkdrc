@@ -100,7 +100,7 @@ super + alt + n
 	bspc node -t "floating"
 
 ## reload iwd.service
-super + alt + shift +n
+super + alt + shift + n
 	urxvtc -e sudo systemctl restart iwd.service;\
 	bspc node -t "floating"
 
@@ -169,10 +169,6 @@ super + {t,shift + t,s,f}
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
-
-# cancel presel
-super + shift + k
-	for window in $(bspc query -N -d focused); do bspc node $window -p cancel; done
 
 #
 # focus/swap
