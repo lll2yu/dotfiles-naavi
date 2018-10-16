@@ -83,7 +83,7 @@ super + alt + 9
 
 ## cheatsheet 
 super + alt + c
-	urxvtc -e cht.sh --shell;\
+	urxvtc -e genius;\
 	bspc node -t "floating"
 
 ## lock the screen
