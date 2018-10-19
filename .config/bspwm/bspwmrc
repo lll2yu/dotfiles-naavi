@@ -62,3 +62,4 @@ bspc rule -a Firefox desktop='^3'
 bspc rule -a jetbrains-studio desktop='^2'
 bspc rule -a TelegramDesktop desktop='^4'
 bspc rule -a aft-linux-qt state=floating
+bspc rule -a feh state=floating
