@@ -109,11 +109,6 @@ super + alt + b
 	urxvtc -e ncpamixer;\
 	bspc node -t "floating"
 
-## google play music
-super + alt + g
-	urxvtc -e gpymusic;\
-	bspc node -t "floating"
-
 ## mocp
 super + alt + m
 	urxvtc -e mocp;\
