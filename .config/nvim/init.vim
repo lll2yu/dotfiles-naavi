@@ -38,7 +38,6 @@ set relativenumber
 set nocompatible 
 syntax on 
 filetype plugin indent on
-set nowrap
 
 "set char encoding"
 set encoding=utf8

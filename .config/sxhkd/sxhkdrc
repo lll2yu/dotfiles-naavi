@@ -81,7 +81,7 @@ super + alt + 0
 super + alt + 9
 	xmodmap ~/.config/scripts/speedswapperoff
 
-## cheatsheet 
+## calculator
 super + alt + c
 	urxvtc -e genius;\
 	bspc node -t "floating"
@@ -123,6 +123,10 @@ super + alt + e
 super + alt + r
 	urxvtc -e rtv;\
 	bspc node -t "floating"
+
+## input emoji
+super + alt + @space
+	sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type
 
 ## update system
 super + alt + u
