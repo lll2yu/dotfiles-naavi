@@ -1,0 +1,11 @@
+[Unit]
+Description=Newsboat reload
+Wants=newsboat.timer
+RequiresMountsFor=/home/
+After=psd.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/bin/newsboat -x reload
+
