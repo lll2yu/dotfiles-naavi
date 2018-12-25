@@ -99,11 +99,6 @@ super + alt + n
 	urxvtc -e iwctl;\
 	bspc node -t "floating"
 
-## reload iwd.service
-super + alt + shift + n
-	urxvtc -e sudo systemctl restart iwd.service;\
-	bspc node -t "floating"
-
 ## open ncpamixer
 super + alt + b
 	urxvtc -e ncpamixer;\
