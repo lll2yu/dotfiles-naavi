@@ -125,7 +125,7 @@ super + alt + @space
 
 ## update system
 super + alt + u
-	urxvtc -e aurman -Syu;\
+	urxvtc -e yay;\
 	bspc node -t "floating"
 
 #
