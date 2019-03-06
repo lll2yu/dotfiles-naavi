@@ -1,0 +1,8 @@
+#! /bin/sh
+pgrep -x mocp
+if [ $? -eq 1 ]
+then
+	playerctl play-pause
+else
+	mocp -G
+fi

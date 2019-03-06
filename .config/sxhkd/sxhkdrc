@@ -50,11 +50,11 @@ XF86MonBrightnessDown
 
 # Media player controls
 XF86AudioPlay 
-	 playerctl play-pause || mocp -G
+	sh /home/lll2yu/.config/scripts/musicPlayPause
 XF86AudioNext 
-	 playerctl next || mocp -f
+	sh /home/lll2yu/.config/scripts/musicNext
 XF86AudioPrev 
-	 playerctl previous || mocp -r 
+	sh /home/lll2yu/.config/scripts/musicPrev
 
 
 # screenshot
@@ -97,6 +97,11 @@ super + alt + f
 ## open iwctl
 super + alt + n
 	urxvtc -e iwctl;\
+	bspc node -t "floating"
+
+## reload iwd.service
+super + alt + shift + n
+	urxvtc -e sudo systemctl restart iwd.service;\
 	bspc node -t "floating"
 
 ## open ncpamixer
