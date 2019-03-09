@@ -128,6 +128,10 @@ super + alt + r
 super + alt + @space
 	sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type
 
+## bwrofi
+super + ctrl + @space
+	bwmenu
+
 ## update system
 super + alt + u
 	urxvtc -e yay;\

@@ -33,17 +33,11 @@ numlockx &
 ##get rid of the rat when not needed
 unclutter &
 
-##clipboard daemon
-greenclip daemon &
-
 ##for those funny Java things
 wmname LG3D &
 
 ##touchpad gestures
 libinput-gestures-setup start &
-
-##xidlehook lock the screen after 10 minutes of inactivity
-xidlehook --time 12 --timer 'xrandr --output "$(xrandr | grep primary | cut -d " " -f 1)" --brightness 1; betterlockscreen -l dimblur' --notify 10 --notifier  'xrandr --output "$(xrandr | grep primary | cut -d " " -f 1)" --brightness .1' --canceller 'xrandr --output "$(xrandr | grep primary | cut -d " " -f 1)" --brightness 1' --not-when-fullscreen --not-when-audio &
 
 ##restore wal colorscheme
 wal -R -a 95 &
@@ -63,3 +57,4 @@ bspc rule -a jetbrains-studio desktop='^2'
 bspc rule -a TelegramDesktop desktop='^4'
 bspc rule -a aft-linux-qt state=floating
 bspc rule -a feh state=floating
+bspc rule -a OTPClient state=floating
