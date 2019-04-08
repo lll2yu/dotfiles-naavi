@@ -22,7 +22,7 @@ bspc config honor_size_hints	 false
 
 #### Applications to autostart
 ##start compton
-compton  --backend glx --unredir-if-possible --vsync opengl-swc --no-fading-openclose -b &
+#compton -b --fade-in-step=1 --fade-out-step=1 --backend glx --unredir-if-possible --vsync --no-fading-openclose &
 
 ##start urxvt daemon
 urxvtd --quiet --opendisplay --fork &
@@ -40,7 +40,7 @@ wmname LG3D &
 libinput-gestures-setup start &
 
 ##restore wal colorscheme
-wal -R -a 95 &
+wal -R &
 
 ##launch polybar
 polybar main &
@@ -51,6 +51,9 @@ xmodmap ~/.config/scripts/speedswapperon &
 ##notify when low battery
 sh ~/.config/scripts/battery_check &
 
+##screenlock when idle
+sh ~/.config/scripts/xidlehook &
+
 bspc rule -a Screenkey manage=off
 bspc rule -a Firefox desktop='^3'
 bspc rule -a jetbrains-studio desktop='^2'
@@ -58,3 +61,4 @@ bspc rule -a TelegramDesktop desktop='^4'
 bspc rule -a aft-linux-qt state=floating
 bspc rule -a feh state=floating
 bspc rule -a OTPClient state=floating
+bspc rule -a Spotify desktop='^5'
