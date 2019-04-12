@@ -1,6 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export PATH=~/.local/bin:$PATH
 #shell styling and autocomplete
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -14,6 +15,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
+source /usr/share/zsh/site-functions/lfcd.sh
+compdef _gnu_generic gallery-dl
 #source /usr/share/zsh/plugins/zsh-vi-mode/vi-mode.zsh
 
 setopt auto_cd

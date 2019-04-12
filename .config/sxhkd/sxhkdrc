@@ -83,7 +83,7 @@ super + alt + 9
 
 ## calculator
 super + alt + c
-	urxvtc -e genius;\
+	urxvtc -e genius --maxdigits=12 --floatresult;\
 	bspc node -t "floating"
 
 ## lock the screen
