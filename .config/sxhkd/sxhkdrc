@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	urxvtc
+	urxvtc 
 
 # terminal emulator floating
 super + alt + Return
@@ -23,30 +23,17 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
-## input from clipboard
-super + alt + v
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' ; sh -c 'xdotool type "$(xclip -o -selection clipboard)"'
-
 ### Pulse Audio controls
 
 #increase sound volume
 XF86AudioRaiseVolume 
-	 pactl set-sink-volume 0 +5%  
+	 pactl set-sink-volume 0 +5% 
 #decrease sound volume
 XF86AudioLowerVolume 
-	 pactl set-sink-volume 0 -5% 
+	 pactl set-sink-volume 0 -5%
 # mute sound
 XF86AudioMute 
-	 pactl set-sink-mute 0 toggle  
-
-### Sreen brightness controls
-
-# increase screen brightness
-XF86MonBrightnessUp 
-	light -A 5  
-# decrease screen brightness
-XF86MonBrightnessDown 
-	light -U 5 
+	 pactl set-sink-mute 0 toggle 
 
 # Media player controls
 XF86AudioPlay 
@@ -55,7 +42,10 @@ XF86AudioNext
 	sh /home/lll2yu/.config/scripts/musicNext
 XF86AudioPrev 
 	sh /home/lll2yu/.config/scripts/musicPrev
-
+ctrl + alt + KP_Left
+	sh /home/lll2yu/.config/scripts/musicSeekForward
+ctrl + alt + KP_End 
+	sh /home/lll2yu/.config/scripts/musicSeekBackward
 
 # screenshot
 Print
@@ -65,7 +55,7 @@ super + Print
 	maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved"
 
 ctrl + Print
-	maim -s | convert - \( +clone -background black -shadow 80x5+10+10 \) +swap -background none -layers merge +repage ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png ;notify-send "Screenshot saved"
+	maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png ;notify-send "Screenshot saved"
 
 alt + Print
 	maim -s | xclip -selection clipboard -t image/png
@@ -88,11 +78,11 @@ super + alt + c
 
 ## lock the screen
 super + alt + BackSpace
-	betterlockscreen -l dimblur
+	slock -m "Locked at  $(date "+%a %d, %H:%M:%S")"
 
 ## launch firefox
 super + alt + f
-	firefox
+	firefox -p
 
 ## open iwctl
 super + alt + n
@@ -109,19 +99,19 @@ super + alt + b
 	urxvtc -e ncpamixer;\
 	bspc node -t "floating"
 
-## mocp
+## musikcube
 super + alt + m
 	urxvtc -e mocp;\
 	bspc node -t "floating"
 
-## ranger file manager
+## lf file manager
 super + alt + e
-	urxvtc -e ranger;\
+	urxvtc -e lf;\
 	bspc node -t "floating"
 
 ## rtv
 super + alt + r
-	urxvtc -e rtv;\
+	urxvtc -e newsboat;\
 	bspc node -t "floating"
 
 ## input emoji
@@ -130,7 +120,7 @@ super + alt + @space
 
 ## bwrofi
 super + ctrl + @space
-	bwmenu
+	bwpyro --cache 0 --no-logging
 
 ## update system
 super + alt + u

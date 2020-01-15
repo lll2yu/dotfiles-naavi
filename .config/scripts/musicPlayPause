@@ -2,7 +2,12 @@
 pgrep -x mocp
 if [ $? -eq 1 ]
 then
-	playerctl play-pause
+	if [ $(playerctl -l | wc -l) = 1 ]
+		then
+			playerctl play-pause
+	else
+		playerctl -p $(echo -e "$(playerctl -l)" | rofi -dmenu) play-pause
+	fi
 else
 	mocp -G
 fi

@@ -1,0 +1,8 @@
+#!/bin/sh
+pgrep -x mocp
+if [ $? -eq 1 ]
+then
+	playerctl position 10+
+else
+	mocp -k +10
+fi

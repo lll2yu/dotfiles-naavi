@@ -2,7 +2,12 @@
 pgrep -x mocp
 if [ $? -eq 1 ]
 then
-	playerctl next
+	if [ $(playerctl -l | wc -l) = 1 ]
+		then
+			playerctl next 
+	else
+		playerctl -p $(echo -e "$(playerctl -l)" | rofi -dmenu) next
+	fi
 else
 	mocp -f
 fi
