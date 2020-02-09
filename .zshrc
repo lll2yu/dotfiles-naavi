@@ -3,10 +3,12 @@
 
 export PATH=~/.local/bin:$PATH
 #shell styling and autocomplete
-HISTFILE=~/.histfile
+HISTFILE=~/.config/histfile
 HISTSIZE=1000
 SAVEHIST=4000
 autoload -Uz compinit promptinit 
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 compinit;promptinit
 prompt spaceship
 
@@ -17,9 +19,15 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
 source /usr/share/zsh/site-functions/lfcd.sh
 compdef _gnu_generic gallery-dl
-#source /usr/share/zsh/plugins/zsh-vi-mode/vi-mode.zsh
 
-setopt auto_cd
+setopt autocd appendhistory 
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
 ##pywal stuff
 (cat ~/.cache/wal/sequences &)
 ##export environment variables
@@ -33,6 +41,20 @@ function mm() {
     vidTitle=${@// /"\ "}
 	mpv --ytdl-format=bestaudio ytdl://ytsearch:"$vidTitle"
 }
+
+##mediafire download
+function mfdl() {
+url=$(curl -Lqs "$1"|grep "href.*download.*media.*"|tail -1|cut -d '"' -f 2)
+#aria2c -x 6 "$url"
+wget "$url"
+}
+
+##filemanager
+bindkey -s '^o' 'lfcd\n'
+
+##command edit
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 ##zsh history search settings
 bindkey '^[[A' history-substring-search-up
