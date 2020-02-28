@@ -12,8 +12,7 @@ then
 			playerctl -p $plid play-pause
 			echo $plid >> $PLAYER
 		else
-			playerid=$(head -n 1 $PLAYER)
-			playerctl -p $playerid play-pause
+			playerctl -p $(head -n 1 $PLAYER) play-pause
 		fi
 	fi
 else

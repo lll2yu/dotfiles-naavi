@@ -12,8 +12,7 @@ then
 			playerctl -p $plid previous
 			echo $plid >> $PLAYER
 		else
-			playerid=$(head -n 1 $PLAYER)
-			playerctl -p $playerid previous
+			playerctl -p $(head -n 1 $PLAYER) previous
 		fi
 	fi
 else
