@@ -1,4 +1,5 @@
 #! /bin/sh
+PLAYER=/tmp/playerctlname
 pgrep -x mocp
 if [ $? -eq 1 ]
 then
@@ -6,7 +7,14 @@ then
 		then
 			playerctl play-pause
 	else
-		playerctl -p $(echo -e "$(playerctl -l)" | rofi -dmenu) play-pause
+		if [ ! -f "$PLAYER" ]; then
+			plid=$(echo -e "$(playerctl -l)" | rofi -dmenu)
+			playerctl -p $plid play-pause
+			echo $plid >> $PLAYER
+		else
+			playerid=$(head -n 1 $PLAYER)
+			playerctl -p $playerid play-pause
+		fi
 	fi
 else
 	mocp -G

@@ -36,6 +36,8 @@ XF86AudioMute
 	 pactl set-sink-mute 0 toggle 
 
 # Media player controls
+super + XF86AudioPlay 
+	rm /tmp/playerctlname
 XF86AudioPlay 
 	sh /home/lll2yu/.config/scripts/musicPlayPause
 XF86AudioNext 
@@ -84,22 +86,16 @@ super + alt + BackSpace
 super + alt + f
 	firefox -p
 
-## open iwctl
+## open cmst
 super + alt + n
-	urxvtc -e iwctl;\
-	bspc node -t "floating"
-
-## reload iwd.service
-super + alt + shift + n
-	urxvtc -e sudo systemctl restart iwd.service;\
-	bspc node -t "floating"
+	cmst
 
 ## open ncpamixer
 super + alt + b
 	urxvtc -e ncpamixer;\
 	bspc node -t "floating"
 
-## musikcube
+## moc
 super + alt + m
 	urxvtc -e mocp;\
 	bspc node -t "floating"
@@ -118,7 +114,7 @@ super + alt + r
 super + alt + @space
 	sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type
 
-## bwrofi
+## bwpyro
 super + ctrl + @space
 	bwpyro --cache 0 --no-logging
 
