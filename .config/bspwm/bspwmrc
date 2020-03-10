@@ -11,7 +11,7 @@ bspc monitor -d 1 2 3 4 5 6
 bspc config normal_border_color "$color1"
 bspc config active_border_color "$color2"
 bspc config focused_border_color "$color15"
-bspc config presel_border_color "$color1"
+bspc config presel_feedback_color "$color1"
 
 bspc config border_width         3
 bspc config window_gap           5
@@ -24,6 +24,8 @@ bspc config honor_size_hints	 false
 ##start compton
 #compton -b --fade-in-step=1 --fade-out-step=1 --backend glx --unredir-if-possible --vsync --no-fading-openclose &
 
+# wallpaper
+habak -ms ~/.cache/wallpaper.jpg
 ##start urxvt daemon
 urxvtd --quiet --opendisplay --fork &
 
@@ -34,7 +36,7 @@ numlockx &
 unclutter &
 
 ##for those funny Java things
-wmname LG3D &
+#wmname LG3D &
 
 ##touchpad gestures
 libinput-gestures-setup start &
@@ -51,14 +53,11 @@ xmodmap ~/.config/scripts/speedswapperon &
 ##notify when low battery
 sh ~/.config/scripts/battery_check &
 
-##screenlock when idle
-sh ~/.config/scripts/xidlehook &
-
-bspc rule -a Screenkey manage=off
-bspc rule -a Firefox desktop='^3'
+bspc rule -a firefox desktop='^3'
 bspc rule -a jetbrains-studio desktop='^2'
 bspc rule -a TelegramDesktop desktop='^4'
 bspc rule -a aft-linux-qt state=floating
 bspc rule -a feh state=floating
-bspc rule -a OTPClient state=floating
-bspc rule -a Spotify desktop='^5'
+bspc rule -a 2.1.0 state=floating
+bspc rule -a firefox:Toolkit sticky=on state=floating
+bspc rule -a java-lang-Thread:sun-awt-X11-XWindowPeer state=floating desktop='^2'

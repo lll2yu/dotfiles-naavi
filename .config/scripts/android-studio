@@ -1,0 +1,4 @@
+#!/bin/sh
+wmname LG3D &
+newgrp androidstudiousers &
+android-studio %f

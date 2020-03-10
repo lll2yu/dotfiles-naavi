@@ -105,7 +105,7 @@ super + alt + e
 	urxvtc -e lf;\
 	bspc node -t "floating"
 
-## rtv
+## newsboat
 super + alt + r
 	urxvtc -e newsboat;\
 	bspc node -t "floating"
