@@ -21,11 +21,12 @@ bspc config gapless_monocle      true
 bspc config honor_size_hints	 false
 
 #### Applications to autostart
-##start compton
-#compton -b --fade-in-step=1 --fade-out-step=1 --backend glx --unredir-if-possible --vsync --no-fading-openclose &
+##start picom
+picom -b &
 
 # wallpaper
 habak -ms ~/.cache/wallpaper.jpg
+
 ##start urxvt daemon
 urxvtd --quiet --opendisplay --fork &
 
@@ -34,9 +35,6 @@ numlockx &
 
 ##get rid of the rat when not needed
 unclutter &
-
-##for those funny Java things
-#wmname LG3D &
 
 ##touchpad gestures
 libinput-gestures-setup start &
