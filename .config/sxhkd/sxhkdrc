@@ -82,6 +82,10 @@ super + alt + c
 super + alt + BackSpace
 	slock -m "Locked at  $(date "+%a %d, %H:%M:%S")"
 
+## shutdown menu
+super + ctrl + BackSpace
+	sh ~/.config/scripts/logoutscript
+
 ## launch firefox
 super + alt + f
 	firefox -p
@@ -89,13 +93,17 @@ super + alt + f
 ## open cmst
 super + alt + n
 	cmst
+## reload iwd.service
+super + alt + shift + n
+	urxvtc -e sudo systemctl restart iwd.service;\
+	bspc node -t "floating"
 
 ## open ncpamixer
 super + alt + b
 	urxvtc -e ncpamixer;\
 	bspc node -t "floating"
 
-## moc
+## musikcube
 super + alt + m
 	urxvtc -e mocp;\
 	bspc node -t "floating"
@@ -105,7 +113,7 @@ super + alt + e
 	urxvtc -e lf;\
 	bspc node -t "floating"
 
-## newsboat
+## rtv
 super + alt + r
 	urxvtc -e newsboat;\
 	bspc node -t "floating"
@@ -114,7 +122,7 @@ super + alt + r
 super + alt + @space
 	sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type
 
-## bwpyro
+## bwrofi
 super + ctrl + @space
 	bwpyro --cache 0 --no-logging
 

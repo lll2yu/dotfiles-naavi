@@ -1,0 +1,16 @@
+#!/bin/sh
+action=$(echo -e "Suspend\nShutDown\nReboot" | rofi -dmenu)
+case $action in
+	Suspend)
+		systemctl suspend
+		;;
+	ShutDown)
+		shutdown now
+		;;
+	Reboot)
+		systemctl reboot
+		;;
+	*)
+		exit
+		;;
+esac
