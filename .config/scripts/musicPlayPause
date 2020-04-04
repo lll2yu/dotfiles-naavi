@@ -10,7 +10,9 @@ then
 		if [ ! -f "$PLAYER" ]; then
 			plid=$(echo -e "$(playerctl -l)" | rofi -dmenu)
 			playerctl -p $plid play-pause
-			echo $plid >> $PLAYER
+			if [ ! -z "$plid" ];then
+				echo $plid >> $PLAYER
+			fi
 		else
 			playerctl -p $(head -n 1 $PLAYER) play-pause
 		fi
