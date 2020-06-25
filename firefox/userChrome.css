@@ -1,13 +1,15 @@
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
-/* Hide main tabs toolbar */
+@import url('file:///home/lll2yu/.cache/wal/colors.css');
 
 #main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar {
   opacity: 0;
   pointer-events: none;
 }
 
-#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+browser {
+  background-color: var(--color0) !important;
+}
+
+#main-window:not([tabsintitlebar="false"]) #TabsToolbar {
   visibility: collapse !important;
 }
 
@@ -20,14 +22,14 @@
 
 /* Hide splitter, when using Tree Style Tab. */
 
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+#sidebar-box + #sidebar-splitter {
   display: none !important;
 }
 
 /* Hide sidebar header, when using Tree Style Tab. */
 
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-  visibility: collapse;
+#sidebar-header {
+  display: none;
 }
 
 /* Shrink sidebar until hovered, when using Tree Style Tab. */
@@ -37,59 +39,96 @@
   --wide-tab-width: 200px;
 }
 
-#sidebar-box:not([sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]) {
-  min-width: var(--wide-tab-width) !important;
-  max-width: none !important;
-}
-
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+#sidebar-box {
+  overflow: hidden;
   position: relative !important;
-  transition: all 100ms !important;
+  transition: all 0.2s ease !important;
   min-width: var(--thin-tab-width) !important;
   max-width: var(--thin-tab-width) !important;
+  z-index: 2;
 }
 
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover {
+#sidebar-box:hover {
   transition: all 200ms !important;
   min-width: var(--wide-tab-width) !important;
   max-width: var(--wide-tab-width) !important;
   margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
 }
 
-statuspanel[type="overLink"] {
-  display: none !important;
+#main-window[inFullscreen][inDOMFullscreen] #appcontent {
+  margin-left: 0;
 }
 
-#TabsToolbar {
-  visibility: collapse;
+#main-window[inFullscreen] #sidebar {
+  height: 100vh;
 }
 
-:root:not([customizing]) #navigator-toolbox:not(:hover):not(:focus-within) {
-  max-height: 0;
-  min-height: calc(0px);
+#browser vbox#appcontent tabbrowser,
+#content,
+#tabbrowser-tabpanels,
+browser[type=content-primary],
+browser[type=content] > html {
+  background: var(--color0) !important;
 }
 
-:root:not([customizing]) #navigator-toolbox:not(:hover):not(:focus-within) #nav-bar {
-  max-height: 0;
-  min-height: 0!important;
-  --tridactyl-auto-show-zone: 10px;
-  margin-bottom: calc(-1 * var(--tridactyl-auto-show-zone));
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_toolbox.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Hide the whole toolbar area unless urlbar is focused or cursor is over the toolbar */
+
+@media (-moz-os-version: windows-win10){
+
+  :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 10px !important; }
+  :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox{ margin-top: -2px }
+
+  @media screen and (min-resolution: 1.25dppx){
+    :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 9px !important; }
+  }
+  @media screen and (min-resolution: 1.5dppx){
+    :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 8px !important; }
+    :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox{ margin-top: -1px }
+  }
+  @media screen and (min-resolution: 2dppx){
+    :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 7px !important; }
+  }
+}
+
+:root[sizemode="fullscreen"]{ margin-top: 0px !important; }
+
+#navigator-toolbox{
+  position: fixed !important;
+  display: block;
+  background-color: var(--lwt-accent-color,black) !important;
+  transition: transform 82ms 33ms linear, opacity 82ms 33ms linear !important;
+  transform-origin: top;
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#navigator-toolbox > *{ line-height: normal; pointer-events: auto }
+
+#navigator-toolbox,
+#navigator-toolbox > *{
+  width: 100vw;
+  -moz-appearance: none !important;
+}
+
+#navigator-toolbox:not(:focus-within):not(:hover){
+  transform: rotateX(86deg); /* This may need to be lower in osx - like 75 or so */
   opacity: 0;
 }
 
-#navigator-toolbox::after {
-  display: none !important;
+:root[sizemode="maximized"] #navigator-toolbox:not(:focus-within):not(:hover){ transform: rotateX(89.5deg) }
+
+/* Don't apply transform before window has been fully created */
+:root:not([sessionrestored]) #navigator-toolbox{ transform:none !important }
+
+:root[customizing] #navigator-toolbox{
+  position: relative !important;
+  transform: none !important;
+  opacity: 1 !important;
 }
 
-#titlebar {
-  display: none !important;
-}
-
-#navigator-toolbox:not(:hover):not(:focus-within) #toolbar-menubar > * {
-  background-color: rgb(232, 232, 231);
-}
-
-statuspanel[type="overLink"],
-#statuspanel[type="overLink"] {
-  display: none !important;
-}
+#navigator-toolbox[inFullscreen] > #PersonalToolbar,
+#PersonalToolbar[collapsed="true"]{ display: none }

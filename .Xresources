@@ -7,10 +7,10 @@ URxvt.cursorBlink: True
 URxvt.iso14755_52: false
 
 ! Fonts for rxvt-unicode
-URxvt.font: xft:FiraCode-Regular:pixelsize=16:antialias=true:hinting=true,xft:Hack-Regular:pixelsize=16,xft:fontawesome-regular:pixelsize=16,xft:devicons-regular:pixelsize=16,xft:octicons:pixelsize=16,xft:Symbola
+URxvt.font: xft:FiraCode-Regular:pixelsize=16:antialias=true:hinting=true,xft:Hack:pixelsize=16,xft:fontawesome-regular:pixelsize=16,xft:Symbola
 URxvt.boldFont: xft:FiraCode-Bold:pixelsize=16:antialias=true:hinting=true,xft:Symbola
 URxvt.italicFont: xft:FiraCode-Light:pixelsize=16:antialias=true,xft:Symbola
-URxvt.letterSpace: 0
+URxvt.letterSpace: 1
 
 !-- Xft settings -- !
 Xft.dpi:        96
@@ -25,7 +25,7 @@ URxvt.colorUL:		#4682B4
 URxvt.internalBorder: 4
 URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
-URxvt.scrollWithBuffer: true
+URxvt.scrollWithBuffer: false
 URxvt.intensityStyles:	false
 URxvt.depth: 32
 
@@ -63,4 +63,4 @@ rofi.bw:		0
 rofi.opacity:		"10"
 rofi.hide-scrollbar:	true
 rofi.width:		30
-
+rofi.theme:		~/.cache/wal/colors-rofi-dark.rasi

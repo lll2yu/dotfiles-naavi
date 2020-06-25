@@ -34,7 +34,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 export EDITOR=nvim
 export BROWSER=firefox
 export SUDO_EDITOR=nvim
-export GPG_TTY=$(tty)
 
 ##ytdl audio search
 function mm() {

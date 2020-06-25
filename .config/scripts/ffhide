@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ "firefox" = "$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)" ]; then
+	xdotool key F6 && xdotool mousemove 1163 44 && sleep 1 && xdotool click 1 && xdotool mousemove 683 393
+fi

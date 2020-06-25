@@ -1,11 +1,45 @@
+@namespace url("http://www.w3.org/1999/xhtml");
+@import url('file:///home/lll2yu/.cache/wal/colors.css');
+:root{
+    scrollbar-color: #E8678E #2E3645 !important;
+    scrollbar-width: thin !important;
+}
+* {
+    scrollbar-width: thin !important;
+}  
+
 @-moz-document regexp("moz-extension://.+/resources/group-tab.html.*") {
   :root {
     background: red !important;
   }
 }
 
+body.loaded.dark {
+	  color: var(--foreground) !important;
+	    background-color: var(--background) !important;
+	    
+}
+
+body.loaded.dark h1 {
+	  color: var(--color1) !important;
+	  
+}
+
+body.loaded.dark h2, body.loaded.dark h3, body.loaded.dark h4, body.loaded.dark h5, body.loaded.dark h6 {
+	  color: var(--color4) !important;
+	  
+}
+
+body.loaded.dark strong {
+	  color: var(--color5) !important;
+	  
+}
+
 @-moz-document url("about:home"),
-url("about:newtab") {
+url("about:newtab"),
+url(moz-extension://e9518bb3-7ffc-4260-bdc8-c62be69fbc68/redirect.html), 
+url(moz-extension://67af9bc8-7ba8-4477-9afa-924b0139681a/html/newtab.html)
+{
     .search-wrapper,
     .tile {
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
@@ -14,7 +48,7 @@ url("about:newtab") {
         border-radius: 15px !important;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
     }
-    html {
+    html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
         height: 100% !important
     }
     body {
@@ -37,3 +71,5 @@ url("about:newtab") {
         color: white !important;
     }
 }    
+
+
