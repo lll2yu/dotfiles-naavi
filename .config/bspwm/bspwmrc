@@ -2,7 +2,7 @@
 
 sxhkd &
 
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor -d 1 2 3 4 5 6 7 8
 
 # source colors generated using pywal
 . "${HOME}/.cache/wal/colors.sh"
@@ -56,6 +56,6 @@ bspc rule -a jetbrains-studio desktop='^2'
 bspc rule -a TelegramDesktop desktop='^4'
 bspc rule -a aft-linux-qt state=floating
 bspc rule -a feh state=floating
-bspc rule -a 2.1.0 state=floating
+bspc rule -a 2.3.0 state=floating
 bspc rule -a firefox:Toolkit sticky=on state=floating
 bspc rule -a java-lang-Thread:sun-awt-X11-XWindowPeer state=floating desktop='^2'
