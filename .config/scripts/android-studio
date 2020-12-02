@@ -1,4 +1,8 @@
-#!/bin/sh
-wmname LG3D &
-newgrp androidstudiousers &
+#!/bin/bash -xv
+Xephyr -ac -br -noreset -screen 1366x768 :1&
+sleep 2
+DISPLAY=:1.0
+picom -b &
+openbox &
+newgrp androidusers &
 android-studio %f

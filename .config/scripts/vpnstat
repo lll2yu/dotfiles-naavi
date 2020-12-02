@@ -1,0 +1,2 @@
+notify-send -t 800 "Waiting....";
+notify-send -t 5000 "ProtonVPN is $(protonvpn status | head -n 4 | awk '{print $NF }')"

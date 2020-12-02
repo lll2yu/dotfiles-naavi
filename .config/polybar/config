@@ -28,14 +28,16 @@ module-margin-left = 1
 module-margin-right = 0
 modules-left = bspwm
 modules-center = date
-modules-right = pulseaudio wlan wlanspeed battery 
+modules-right = pulseaudio wlan wlanspeed 
 tray-position = right
 tray-background = ${colors.background}
 tray-padding = 4
 
-font-0 = FiraCode:pixelsize=10:weight=bold;2
-font-1 = FontAwesome:size=10;2
-font-2 = Noto Sans CJK JP:size=10:antialias=true;2
+font-0 = Victor Mono:pixelsize=10:weight=bold;2
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+#font-1 = FontAwesome:size=10;2
+font-3 = Noto Sans CJK JP:size=10:antialias=true;2
 
 ;-------------------------------------------------
 ;                                                ;
@@ -53,6 +55,8 @@ ws-icon-4 = 5;五
 ws-icon-5 = 6;六
 ws-icon-6 = 7;七
 ws-icon-7 = 8;八
+;ws-icon-8= 9;九
+;ws-icon-9 = 10;十
 
 label-focused = %icon%
 label-focused-padding = 1
@@ -60,10 +64,12 @@ label-focused-foreground = ${colors.foreground}
 
 label-urgent = %icon%
 label-urgent-padding = 1
+;label-urgent-foreground = ${colors.primary}
 label-urgent-foreground = ${colors.alert}
 
 label-occupied = %icon%
 label-occupied-padding = 1
+;label-occupied-foreground = ${colors.primary}
 label-occupied-foreground = ${colors.secondary}
 
 label-empty = %icon%
@@ -75,7 +81,7 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 
-label-connected =%downspeed:8% %upspeed:8%
+label-connected ="%{A1:sh ~/.config/scripts/vpnstat:}%downspeed:8% %upspeed:8%%{A}"
 label-connected-foreground = ${colors.secondary}
 label-connected-background = ${colors.background}
 

@@ -4,20 +4,15 @@
 
 # terminal emulator
 super + Return
-	urxvtc 
+	alacritty
 
 # terminal emulator floating
 super + alt + Return
-	urxvtc;\
-	bspc node -t "floating"
-
-# terminal emulator tabbed
-super + ctrl + Return
-	urxvtc -pe tabbed
+	bspc rule -a \* -o state=floating && alacritty
 
 # program launcher
 super + @space
-	rofi -modi "drun" -threads 0 -show drun
+	sh /home/lll2yu/.config/rofi/launchers/text/launcher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -38,6 +33,8 @@ XF86AudioMute
 # Media player controls
 super + XF86AudioPlay 
 	rm /tmp/playerctlname
+alt + XF86AudioPlay 
+	notify-send "$(cat /tmp/playerctlname ) is the currently selected music player"
 XF86AudioPlay 
 	sh /home/lll2yu/.config/scripts/musicPlayPause
 XF86AudioNext 
@@ -75,8 +72,7 @@ super + alt + 9
 
 ## calculator
 super + alt + c
-	urxvtc -e genius --maxdigits=12 --floatresult;\
-	bspc node -t "floating"
+	galculator
 
 ## lock the screen
 super + alt + BackSpace
@@ -84,7 +80,7 @@ super + alt + BackSpace
 
 ## shutdown menu
 super + ctrl + BackSpace
-	sh ~/.config/scripts/logoutscript
+	sh ~/.config/rofi/powermenu/powermenu.sh
 
 ## launch firefox
 super + alt + f
@@ -93,31 +89,17 @@ super + alt + f
 ## open cmst
 super + alt + n
 	cmst
-## reload iwd.service
-super + alt + shift + n
-	urxvtc -e sudo systemctl restart iwd.service;\
-	bspc node -t "floating"
 
 ## open ncpamixer
 super + alt + b
-	urxvtc -e ncpamixer;\
-	bspc node -t "floating"
+	bspc rule -a \* -o state=floating && alacritty -e ncpamixer
 
-## musikcube
+## mocp
 super + alt + m
-	urxvtc -e mocp;\
-	bspc node -t "floating"
-
+	bspc rule -a \* -o state=floating && alacritty -e mocp
 ## lf file manager
 super + alt + e
-	urxvtc -e lf;\
-	bspc node -t "floating"
-
-## rtv
-super + alt + r
-	urxvtc -e newsboat;\
-	bspc node -t "floating"
-
+	bspc rule -a \* -o state=floating && alacritty -e lf
 ## input emoji
 super + alt + @space
 	sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type
@@ -128,9 +110,7 @@ super + ctrl + @space
 
 ## update system
 super + alt + u
-	urxvtc -e yay;\
-	bspc node -t "floating"
-
+	bspc rule -a \* -o state=floating && alacritty -e yay
 #
 # bspwm hotkeys
 #
@@ -240,37 +220,6 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-
-## add window to scrachpad
-super + a
-	id=$(bspc query -N -n "focused");\
-	if [ -n "$id" ];then \
-		xprop -id $id -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
-		bspc node -t "floating";\
-		xdotool windowunmap $id;\
-	fi
-
-## open/switch scrachpad windows
-super + shift + a
-	i=$(bspc query -N -n "focused.floating");\
-	if [ -n "$i" ];then \
-		xprop -id $i -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
-		xdotool windowunmap $i;\
-	else;\
-		i=$(for w in $(xwininfo -root -children | grep -e "^\s*0x[0-9a-f]\+" -o);do \
-			t=$(xprop -id $w _SCRATCH | grep ' = \(.*\)');\
-			if [ -n "$t" ];then \
-				echo $t $w;\
-			fi;\
-		done|sort -n|head -n1|cut -d" " -f 5);\
-		if [ -n "$i" ];then \
-			xprop -id $i -remove _SCRATCH;\
-			bspc rule -a \* state=floating center=on --one-shot;\
-			xdotool windowmap $i;\
-			bspc node -f $i;\
-		fi;\
-	fi
 
 ## position floating windows around
 alt + KP_{End,Down,Next,Left,Begin,Right,Home,Up,Prior}
