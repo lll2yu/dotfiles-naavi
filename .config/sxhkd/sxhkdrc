@@ -3,16 +3,12 @@
 #
 
 # terminal emulator
-super + Return
-	alacritty
+super + {Return,alt + Return}
+	{alacritty,bspc rule -a \* -o state=floating && alacritty}
 
-# terminal emulator floating
-super + alt + Return
-	bspc rule -a \* -o state=floating && alacritty
-
-# program launcher
-super + @space
-	sh /home/lll2yu/.config/rofi/launchers/text/launcher.sh
+# different launcher's
+{super,super + alt,super + ctrl} + @space
+	{sh /home/lll2yu/.config/rofi/launchers/text/launcher.sh,sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type,bwpyro --cache 0 --no-logging}
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -31,44 +27,28 @@ XF86AudioMute
 	 pactl set-sink-mute 0 toggle 
 
 # Media player controls
-super + XF86AudioPlay 
-	rm /tmp/playerctlname
-alt + XF86AudioPlay 
-	notify-send "$(cat /tmp/playerctlname ) is the currently selected music player"
+{super,alt} + XF86AudioPlay 
+	{rm /tmp/playerctlname,notify-send "$(cat /tmp/playerctlname ) is the currently selected music player"}
 XF86AudioPlay 
 	sh /home/lll2yu/.config/scripts/musicPlayPause
 XF86AudioNext 
 	sh /home/lll2yu/.config/scripts/musicNext
 XF86AudioPrev 
 	sh /home/lll2yu/.config/scripts/musicPrev
-ctrl + alt + KP_Left
-	sh /home/lll2yu/.config/scripts/musicSeekForward
-ctrl + alt + KP_End 
-	sh /home/lll2yu/.config/scripts/musicSeekBackward
+ctrl + alt + {KP_Left,KP_End}
+	{sh /home/lll2yu/.config/scripts/musicSeekForward,sh /home/lll2yu/.config/scripts/musicSeekBackward}
 
 # screenshot
-Print
-	maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved"
+{_,super,ctrl,alt} + Print
+	{maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved",maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved",maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png ;notify-send "Screenshot saved",maim -s | xclip -selection clipboard -t image/png}
 
-super + Print
-	maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png;notify-send "Screenshot saved"
-
-ctrl + Print
-	maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png ;notify-send "Screenshot saved"
-
-alt + Print
-	maim -s | xclip -selection clipboard -t image/png
 ## toggle pointer allow focus
 super + alt + p
 	sh .config/scripts/toggleptrfocus.sh
 
 ## turn on vim speed mode (on by default when starting x)
-super + alt + 0
-	xmodmap ~/.config/scripts/speedswapperon
-
-## turn off vim speed mode
-super + alt + 9
-	xmodmap ~/.config/scripts/speedswapperoff
+super + alt + {0,9}
+	{xmodmap ~/.config/scripts/speedswapperon,xmodmap ~/.config/scripts/speedswapperoff}
 
 ## calculator
 super + alt + c
@@ -100,17 +80,15 @@ super + alt + m
 ## lf file manager
 super + alt + e
 	bspc rule -a \* -o state=floating && alacritty -e lf
-## input emoji
-super + alt + @space
-	sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type
-
-## bwrofi
-super + ctrl + @space
-	bwpyro --cache 0 --no-logging
 
 ## update system
 super + alt + u
 	bspc rule -a \* -o state=floating && alacritty -e yay
+
+##Radio
+super + alt + {r,shift + r}
+	{sh /home/lll2yu/.config/scripts/radio,pkill mpv}
+
 #
 # bspwm hotkeys
 #
