@@ -8,7 +8,7 @@ then
 			playerctl play-pause
 	else
 		if [ ! -f "$PLAYER" ]; then
-			plid=$(echo -e "$(playerctl -l)" | rofi -dmenu)
+			plid=$(echo -e "$(playerctl -l)" | rofi -dmenu -p "Select Player")
 			playerctl -p $plid play-pause
 			if [ ! -z "$plid" ];then
 				echo $plid >> $PLAYER
