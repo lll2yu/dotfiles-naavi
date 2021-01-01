@@ -1,0 +1,2 @@
+#!/bin/sh
+paplay /home/lll2yu/.config/chimes.wav

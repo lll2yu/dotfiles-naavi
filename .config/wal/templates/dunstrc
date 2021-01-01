@@ -18,13 +18,13 @@
 
     # The frame color and width of the notification
     frame_color = "{color4}"
-    frame_width = 4
+    frame_width = 2
 
     # How long a user needs to be idle for sticky notifications
     idle_threshold = 120
 
     # Font and typography settings
-    font = FiraMono 9
+    font = Victor Mono Nerd Font 10
     alignment = center
     word_wrap = yes
     sort = yes
@@ -48,17 +48,19 @@
     # Show indicators
     show_indicators = yes
 
+    # radius
+    corner_radius = 8
 
     ### Icons ###
 
     # Align icons left/right/off
-    icon_position = left
+    icon_position = off
 
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 48
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/24x24/status/:/usr/share/icons/gnome/24x24/devices/
+    #icon_path = /usr/share/icons/gnome/24x24/status/:/usr/share/icons/gnome/24x24/devices/
 
 # These are the keybindings used to control dunst notifications
 [shortcuts]
@@ -91,6 +93,11 @@
 [fullscreen_show_critical]
     msg_urgency = critical
     fullscreen = show
+
+[play_sound]
+    appname = Mutt
+    summary = "*"
+    script = /home/lll2yu/.config/scripts/notialert
 
 # vim:ft=cfg
 
