@@ -87,7 +87,7 @@ super + alt + u
 
 ##Radio
 super + alt + {r,shift + r}
-	{sh /home/lll2yu/.config/scripts/radio,pkill mpv}
+	{sh /home/lll2yu/.config/scripts/radio,kill $(cat /tmp/radio.pid ) && rm /tmp/radio.pid}
 
 #
 # bspwm hotkeys

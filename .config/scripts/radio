@@ -3,43 +3,43 @@ options="Jazz24\nJazz24-low\nSomaFM-SecretAgent\nTSFJazz\nCinemix\nJazzFM\nDRP8-
 chosen="$(echo -e "$options" | rofi -dmenu -i -p "Select Radio to play : ")"
 case $chosen in
 				Jazz24)
-								mpv ~/.local/share/radio/jazz42.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/jazz24.pls'
 								;;
 				Jazz24-low)
-								mpv ~/.local/share/radio/jazz24low.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/jazz24low.pls'
 								;;
 				SomaFM-SecretAgent)
-								mpv ~/.local/share/radio/secretagent130.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/secretagent130.pls'
 								;;
 				TSFJazz)
-								mpv ~/.local/share/radio/tsfjazz.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/tsfjazz.pls'
 								;;
 				Cinemix)
-								mpv ~/.local/share/radio/cinemix.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/cinemix.pls'
 								;;
 				JazzFM)
-								mpv ~/.local/share/radio/jazzfm.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/jazzfm.pls'
 								;;
 				DRP8-Jazz)
-								mpv ~/.local/share/radio/drp8.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/drp8.pls'
 								;;
 				JazzFM91)
-								mpv ~/.local/share/radio/jazz91.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/jazz91.pls'
 								;;
 				RadioSwissClassic)
-								mpv ~/.local/share/radio/rsc.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/rsc.pls'
 								;;
 				RadioSwissJazz)
-								mpv ~/.local/share/radio/rsj.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/rsj.pls'
 								;;
 				XO-FM)
-								mpv ~/.local/share/radio/xo.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/xo.pls'
 								;;
 				RelaxFM)
-								mpv ~/.local/share/radio/relax.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/relax.pls'
 								;;
 				JazzRadioBlues)
-								mpv ~/.local/share/radio/jrb.pls
+								sh -c 'echo $$ >> /tmp/radio.pid; exec mpv ~/.local/share/radio/jrb.pls'
 								;;
 				*)
 								exit
