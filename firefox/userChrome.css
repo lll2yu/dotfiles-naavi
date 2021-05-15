@@ -1,134 +1,132 @@
-@import url('file:///home/lll2yu/.cache/wal/colors.css');
-
-#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar {
-  opacity: 0;
-  pointer-events: none;
-}
-
-browser {
-  background-color: var(--color0) !important;
-}
-
-#main-window:not([tabsintitlebar="false"]) #TabsToolbar {
-  visibility: collapse !important;
-}
-
-/* Sidebar min and max width removal */
-
-#sidebar {
-  max-width: none !important;
-  min-width: 0px !important;
-}
-
-/* Hide splitter, when using Tree Style Tab. */
-
-#sidebar-box + #sidebar-splitter {
-  display: none !important;
-}
-
-/* Hide sidebar header, when using Tree Style Tab. */
-
-#sidebar-header {
-  display: none;
-}
-
-/* Shrink sidebar until hovered, when using Tree Style Tab. */
-
-:root {
-  --thin-tab-width: 30px;
-  --wide-tab-width: 200px;
-}
-
-#sidebar-box {
-  overflow: hidden;
-  position: relative !important;
-  transition: all 0.2s ease !important;
-  min-width: var(--thin-tab-width) !important;
-  max-width: var(--thin-tab-width) !important;
-  z-index: 2;
-}
-
-#sidebar-box:hover {
-  transition: all 200ms !important;
-  min-width: var(--wide-tab-width) !important;
-  max-width: var(--wide-tab-width) !important;
-  margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
-}
-
-#main-window[inFullscreen][inDOMFullscreen] #appcontent {
-  margin-left: 0;
-}
-
-#main-window[inFullscreen] #sidebar {
-  height: 100vh;
-}
-
-#browser vbox#appcontent tabbrowser,
-#content,
-#tabbrowser-tabpanels,
-browser[type=content-primary],
-browser[type=content] > html {
-  background: var(--color0) !important;
-}
-
-/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_toolbox.css made available under Mozilla Public License v. 2.0
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/show_navbar_on_focus_only.css made available under Mozilla Public License v. 2.0
 See the above repository for updates as well as full license text. */
 
-/* Hide the whole toolbar area unless urlbar is focused or cursor is over the toolbar */
+/* Hides #nav-bar and overlays it on top of tabs when urlbar is focused  */
+/* overlay_menubar.css can be used for better handling of menubar when triggered with Alt-key */
+/* This style totally breaks bookmarks toolbar but can be used with autohide_bookmarks_toolbar.css */
 
+:root:not([customizing]) #navigator-toolbox{ display: grid; grid-template-rows: var(--tab-min-height) }
+:root:not([customizing]) #navigator-toolbox > *{ grid-area: 1/1; }
+:root:not([customizing]) #titlebar{ -moz-appearance: none !important; }
+
+/* -moz-appearance: none on titlebar breaks window margins, so re-adjust that */
 @media (-moz-os-version: windows-win10){
 
-  :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 10px !important; }
-  :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox{ margin-top: -2px }
+  :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 8px !important; }
 
   @media screen and (min-resolution: 1.25dppx){
-    :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 9px !important; }
+    :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 7px !important; }
   }
   @media screen and (min-resolution: 1.5dppx){
-    :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 8px !important; }
-    :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox{ margin-top: -1px }
+    :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 6px !important; }
   }
   @media screen and (min-resolution: 2dppx){
-    :root[tabsintitlebar][sizemode="maximized"]:not([inDOMFullscreen]) > body > box{ margin-top: 7px !important; }
+    :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 5px !important; }
   }
 }
 
-:root[sizemode="fullscreen"]{ margin-top: 0px !important; }
-
-#navigator-toolbox{
-  position: fixed !important;
-  display: block;
-  background-color: var(--lwt-accent-color,black) !important;
-  transition: transform 82ms 33ms linear, opacity 82ms 33ms linear !important;
-  transform-origin: top;
-  line-height: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-#navigator-toolbox > *{ line-height: normal; pointer-events: auto }
-
-#navigator-toolbox,
-#navigator-toolbox > *{
-  width: 100vw;
-  -moz-appearance: none !important;
-}
-
-#navigator-toolbox:not(:focus-within):not(:hover){
-  transform: rotateX(86deg); /* This may need to be lower in osx - like 75 or so */
+:root[sessionrestored] #nav-bar:not([customizing]){
+  transform: rotateX(90deg);
+  transition: transform 67ms linear, opacity 0ms linear 67ms !important;
   opacity: 0;
+  z-index: 3;
+}
+:root[sessionrestored] #nav-bar:focus-within{
+  transform: rotateX(0deg);
+  opacity: 1;
+  transition-delay: 0ms, 0ms !important;
 }
 
-:root[sizemode="maximized"] #navigator-toolbox:not(:focus-within):not(:hover){ transform: rotateX(89.5deg) }
+/* This enables compatibility with autohide_bookmarks_toolbar.css */
+#PersonalToolbar{ margin-top: var(--tab-min-height) !important; }
 
-/* Don't apply transform before window has been fully created */
-:root:not([sessionrestored]) #navigator-toolbox{ transform:none !important }
 
-:root[customizing] #navigator-toolbox{
-  position: relative !important;
-  transform: none !important;
-  opacity: 1 !important;
+/* Makes menubar appear as overlay in the top left corner */
+
+#toolbar-menubar{
+  position: fixed;
+  display: flex;
+  top: 0;
+  width: 100vw;
+  height: initial !important;
+  z-index: 10;
 }
 
-#navigator-toolbox[inFullscreen] > #PersonalToolbar,
-#PersonalToolbar[collapsed="true"]{ display: none }
+#toolbar-menubar[autohide="true"][inactive="true"]{ height: 0px !important; }
+
+:root[tabsintitlebar][sizemode="maximized"] #toolbar-menubar{ top: 8px; }
+
+#toolbar-menubar > spacer{ flex-grow: 1 }
+#toolbar-menubar[inactive] > .titlebar-buttonbox-container{ display: none }
+
+#main-menubar{
+  height: calc(var(--tab-min-height) + 3px);
+  background-color: var(--arrowpanel-background);
+  color: var(--arrowpanel-color);
+}
+
+#menubar-items{ -moz-box-orient: horizontal !important; }
+#menubar-items::after{
+  content: "";
+  display: -moz-box;
+  width: 30px;
+  height: calc(var(--tab-min-height) + 3px);
+  background-image: linear-gradient(to right, var(--arrowpanel-background) 30%, transparent);
+}
+
+@supports -moz-bool-pref("layout.css.osx-font-smoothing.enabled"){
+  #toolbar-menubar[autohide="true"]:not([inactive]) > .titlebar-buttonbox-container{ display: none }  
+}
+
+/* Set blank page background-color */
+/* Uses color from theme_colors if available */
+
+#tabbrowser-tabpanels{
+  background-color: var(--uc-light-bkgnd-color,rgb(46,54,69)) !important;
+}
+
+/* Changes various in-UI scrollabars to be slim and more subtle */
+
+.panel-subview-body,
+#permList,
+scrollbar{
+ color: inherit;
+ scrollbar-color: currentColor transparent;
+ scrollbar-width: thin 
+}
+
+/* Always hide status-panel when the page is in fullscreen mode such as fullscreen video player */
+/* No effect on Firefox fullscreen mode (activated with F11 key) - except when the page is in fullscreen */
+
+:root[inDOMFullscreen] #statuspanel{ display: none !important }
+
+/* Small changes to make proton roughly as compact as the old compact mode */
+
+:root{
+  --toolbarbutton-inner-padding: 6px !important;
+  --proton-tab-block-margin: 2px !important;
+  --tabs-shadow-size: 0px !important;
+  --arrowpanel-menuitem-padding: 5px !important;
+}
+
+menupopup > menuitem,
+menupopup > menu{ padding-block: 0.3em !important; }
+
+#urlbar-container{ padding-block: 0px !important; }
+#urlbar-background{ margin-block: 1px }
+/* This is kinda weird, but it makes the horizontal line between tabs and nav-bar render "inside" nav-bar thus tabs are more visibily separated even if there is less space there */
+#nav-bar{ 
+  box-shadow: inset 0 var(--tabs-shadow-size) 0 var(--tabs-border-color) !important;
+}
+
+.tab-close-button{
+  margin-inline-start: 2px !important;
+  width: 16px !important;
+  height: 16px !important;
+  padding: 1px !important;
+}
+
+/* Show a number before tab text*/
+
+.tabbrowser-tab:first-child{ counter-reset: nth-tab 0 } /* Change to -1 for 0-indexing */
+.tab-text::before{ content: counter(nth-tab) ": "; counter-increment: nth-tab }
