@@ -20,6 +20,5 @@
 
 #### Firefox
 ![](https://github.com/lll2yu/dotfiles-naavi/raw/master/firefox.png)
-- [Tab Center Reborn](https://framagit.org/ariasuni/tabcenter-reborn) and
-- [Tridactyl](https://addons.mozilla.org/en-US/firefox/addon/tridactyl-vim/?src=external-github) Extensions are used for this setup.
+- [Tridactyl](https://addons.mozilla.org/en-US/firefox/addon/tridactyl-vim/?src=external-github) Extension is used for vim style navigation.
 
