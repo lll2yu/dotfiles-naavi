@@ -42,17 +42,17 @@ wal -R &
 ##launch polybar
 polybar main &
 
+wmname LG3D &
+
 ##turn on vim speedmode
 xmodmap ~/.config/scripts/speedswapperon &
 
-bspc rule -a firefox desktop='^3'
-bspc rule -a Xephyr:Xephyr desktop='^2'
 bspc rule -a TelegramDesktop desktop='^4'
-bspc rule -a discord desktop='^5'
 bspc rule -a aft-linux-qt state=floating
 bspc rule -a feh state=floating
-bspc rule -a 2.3.2 state=floating
-bspc rule -a firefox:Toolkit sticky=on state=floating
+bspc rule -a Otpclient:otpclient state=floating
+bspc rule -a LibreWolf:Toolkit sticky=on state=floating
 bspc rule -a VirtualBoxVM:VirtualBoxVM desktop='8'
 bspc rule -a Zathura:\* state=fullscreen
 bspc rule -a Galculator:galculator state=floating
+bspc rule -a 'jetbrains-studio:sun-awt-X11-XWindowPeer' manage=off
