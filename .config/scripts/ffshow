@@ -1,4 +1,4 @@
 #!/bin/sh
-if [ "firefox" = "$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)" ]; then
+if [ "librewolf" = "$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)" ]; then
 	xdotool key F6
 fi
