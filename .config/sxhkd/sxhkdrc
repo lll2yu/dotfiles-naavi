@@ -8,7 +8,7 @@ super + {Return,alt + Return}
 
 # different launcher's
 {super,super + alt,super + ctrl} + @space
-	{sh /home/lll2yu/.config/rofi/launchers/text/launcher.sh,sh /home/lll2yu/.config/scripts/splatmoji/splatmoji type,bwpyro --cache 0 --no-logging}
+	{rofi -show ,sh /home/threel/.config/scripts/splatmoji/splatmoji type,rofi-rbw}
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -18,25 +18,34 @@ super + Escape
 
 #increase sound volume
 XF86AudioRaiseVolume 
-	 pactl set-sink-volume 0 +5% 
+	 pamixer -i 5
 #decrease sound volume
 XF86AudioLowerVolume 
-	 pactl set-sink-volume 0 -5%
+	 pamixer -d 5
 # mute sound
 XF86AudioMute 
-	 pactl set-sink-mute 0 toggle 
+	 pamixer -t
 
 # Media player controls
 {super,alt} + XF86AudioPlay 
 	{rm /tmp/playerctlname,notify-send "$(cat /tmp/playerctlname ) is the currently selected music player"}
 XF86AudioPlay 
-	sh /home/lll2yu/.config/scripts/musicPlayPause
+	sh /home/threel/.config/scripts/musicPlayPause
 XF86AudioNext 
-	sh /home/lll2yu/.config/scripts/musicNext
+	sh /home/threel/.config/scripts/musicNext
 XF86AudioPrev 
-	sh /home/lll2yu/.config/scripts/musicPrev
+	sh /home/threel/.config/scripts/musicPrev
 ctrl + alt + {KP_Left,KP_End}
-	{sh /home/lll2yu/.config/scripts/musicSeekForward,sh /home/lll2yu/.config/scripts/musicSeekBackward}
+	{sh /home/threel/.config/scripts/musicSeekForward,sh /home/threel/.config/scripts/musicSeekBackward}
+
+### Sreen brightness controls
+
+# increase screen brightness
+XF86MonBrightnessUp 
+	light -A 5  
+# decrease screen brightness
+XF86MonBrightnessDown 
+	light -U 5
 
 # screenshot
 {_,super,ctrl,alt} + Print
@@ -62,13 +71,13 @@ super + alt + BackSpace
 super + ctrl + BackSpace
 	sh ~/.config/rofi/powermenu/powermenu.sh
 
-## launch firefox
+## launch librewolf
 super + alt + f
-	firefox -p
+	librewolf
 
-## open cmst
+## open iwctl
 super + alt + n
-	cmst
+	bspc rule -a \* -o state=floating && alacritty -e iwctl
 
 ## open ncpamixer
 super + alt + b
@@ -87,7 +96,7 @@ super + alt + u
 
 ##Radio
 super + alt + {r,shift + r}
-	{sh /home/lll2yu/.config/scripts/radio,kill $(cat /tmp/radio.pid ) && rm /tmp/radio.pid}
+	{sh /home/threel/.config/scripts/radio,kill $(cat /tmp/radio.pid ) && rm /tmp/radio.pid}
 
 #
 # bspwm hotkeys

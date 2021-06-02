@@ -16,9 +16,9 @@ prompt spaceship
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
-source /usr/share/zsh/site-functions/lfcd.sh
-compdef _gnu_generic gallery-dl
+#source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
+#source /usr/share/zsh/site-functions/lfcd.sh
+#compdef _gnu_generic gallery-dl
 
 setopt autocd appendhistory 
 
@@ -28,12 +28,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-##pywal stuff
-(cat ~/.cache/wal/sequences &)
 ##export environment variables
 export EDITOR=nvim
-export BROWSER=firefox
-export SUDO_EDITOR=nvim
+export BROWSER=librewolf
 
 ##ytdl audio search
 function mm() {
@@ -63,27 +60,25 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 ##aliases
 
-alias vim='nvim'
-alias sv='sudo -e '
+#alias vim='nvim'
 alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
-alias S='sudo systemctl'
 #pacman aliases(taken from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/archlinux/archlinux.plugin.zsh)
-alias pacupg='sudo pacman -Syu'
-alias pacin='sudo pacman -S'
-alias pacins='sudo pacman -U'
-alias pacre='sudo pacman -R'
-alias pacrem='sudo pacman -Rns'
+alias pacupg='doas pacman -Syu'
+alias pacin='doas pacman -S'
+alias pacins='doas pacman -U'
+alias pacre='doas pacman -R'
+alias pacrem='doas pacman -Rns'
 alias pacrep='pacman -Si'
 alias pacreps='pacman -Ss'
 alias pacloc='pacman -Qi'
 alias paclocs='pacman -Qs'
-alias pacinsd='sudo pacman -S --asdeps'
-alias pacmir='sudo pacman -Syy'
-alias paclsorphans='sudo pacman -Qdt'
-alias pacrmorphans='sudo pacman -Rs $(pacman -Qtdq)'
-alias pacfileupg='sudo pacman -Fy'
+alias pacinsd='doas pacman -S --asdeps'
+alias pacmir='doas pacman -Syy'
+alias paclsorphans='doas pacman -Qdt'
+alias pacrmorphans='doas pacman -Rs $(pacman -Qtdq)'
+alias pacfileupg='doas pacman -Fy'
 alias pacfiles='pacman -Fs'
 alias pacls='pacman -Ql'
 alias pacown='pacman -Qo'

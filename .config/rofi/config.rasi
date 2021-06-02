@@ -1,0 +1,7 @@
+configuration {
+	modi: "drun,window";
+	font: "Victor Mono Nerd Font 14";
+	hide-scrollbar: true;
+	fullscreen: false;
+}
+@import "/usr/share/rofi/themes/onedark.rasi"

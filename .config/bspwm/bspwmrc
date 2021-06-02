@@ -4,17 +4,14 @@ sxhkd &
 
 bspc monitor -d 1 2 3 4 5 6 7 8
 
-# source colors generated using pywal
-. "${HOME}/.cache/wal/colors.sh"
-
 # Set the border colors.
-bspc config normal_border_color "$color1"
-bspc config active_border_color "$color2"
-bspc config focused_border_color "$color15"
-bspc config presel_feedback_color "$color1"
+bspc config normal_border_color "#8FBCBB"
+bspc config active_border_color "#ffd166"
+bspc config focused_border_color "#f28482" 
+bspc config presel_feedback_color "#8FBCBB"
 
-bspc config border_width         3
-bspc config window_gap           5
+bspc config border_width         2
+bspc config window_gap           1
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
@@ -25,34 +22,25 @@ bspc config honor_size_hints	 false
 picom --experimental-backends -b &
 
 # wallpaper
-habak -ms ~/.cache/wallpaper.jpg
-
+~/.fehbg &
 ##numlock state
 numlockx &
-
-##get rid of the rat when not needed
-unclutter &
 
 ##touchpad gestures
 libinput-gestures-setup start &
 
-##restore wal colorscheme
-wal -R &
-
 ##launch polybar
 polybar main &
 
-wmname LG3D &
-
-##turn on vim speedmode
+##turn on vim 'speedmode'
 xmodmap ~/.config/scripts/speedswapperon &
 
 bspc rule -a TelegramDesktop desktop='^4'
-bspc rule -a aft-linux-qt state=floating
-bspc rule -a feh state=floating
+bspc rule -a feh state=fullscreen
 bspc rule -a Otpclient:otpclient state=floating
 bspc rule -a LibreWolf:Toolkit sticky=on state=floating
 bspc rule -a VirtualBoxVM:VirtualBoxVM desktop='8'
 bspc rule -a Zathura:\* state=fullscreen
 bspc rule -a Galculator:galculator state=floating
 bspc rule -a 'jetbrains-studio:sun-awt-X11-XWindowPeer' manage=off
+bspc rule -a jetbrains-studio:jetbrains-studio state=floating
