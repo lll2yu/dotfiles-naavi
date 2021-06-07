@@ -26,6 +26,8 @@ picom --experimental-backends -b &
 ##numlock state
 numlockx &
 
+unclutter &
+
 ##touchpad gestures
 libinput-gestures-setup start &
 

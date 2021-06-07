@@ -27,8 +27,9 @@ XF86AudioMute
 	 pamixer -t
 
 # Media player controls
-{super,alt} + XF86AudioPlay 
-	{rm /tmp/playerctlname,notify-send "$(cat /tmp/playerctlname ) is the currently selected music player"}
+{super,alt,ctrl} + XF86AudioPlay 
+	{rm /tmp/playerctlname,sed -n 's/^[[:space:]]*icy-title:[[:space:]]*//p' /tmp/radio.out | sed -n '$p' | while read OUT; do notify-send "Now Playing" "$OUT" --icon "/usr/share/icons/breeze-dark/actions/24/music-note-16th.svg"; done,notify-send "$(cat /tmp/playerctlname ) is the currently selected music player}
+
 XF86AudioPlay 
 	sh /home/threel/.config/scripts/musicPlayPause
 XF86AudioNext 
@@ -39,13 +40,15 @@ ctrl + alt + {KP_Left,KP_End}
 	{sh /home/threel/.config/scripts/musicSeekForward,sh /home/threel/.config/scripts/musicSeekBackward}
 
 ### Sreen brightness controls
-
 # increase screen brightness
 XF86MonBrightnessUp 
 	light -A 5  
 # decrease screen brightness
 XF86MonBrightnessDown 
 	light -U 5
+# turn off screen
+F8
+	sleep 1;xset dpms force off
 
 # screenshot
 {_,super,ctrl,alt} + Print
@@ -65,7 +68,7 @@ super + alt + c
 
 ## lock the screen
 super + alt + BackSpace
-	slock -m "Locked at  $(date "+%a %d, %H:%M:%S")"
+	physlock -p "Locked at  $(date "+%a %d, %H:%M:%S")"
 
 ## shutdown menu
 super + ctrl + BackSpace
@@ -96,7 +99,7 @@ super + alt + u
 
 ##Radio
 super + alt + {r,shift + r}
-	{sh /home/threel/.config/scripts/radio,kill $(cat /tmp/radio.pid ) && rm /tmp/radio.pid}
+	{sh /home/threel/.config/scripts/radio,kill $(cat /tmp/radio.pid ) && rm /tmp/radio.*}
 
 #
 # bspwm hotkeys
